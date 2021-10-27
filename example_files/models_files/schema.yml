@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: person_information
+    columns:
+      - name: id
+        description: "person identification"
+        tests:
+          - unique
+          - not_null
+

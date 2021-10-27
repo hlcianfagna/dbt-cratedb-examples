@@ -1,0 +1,66 @@
+
+# Name your project! Project names should contain only lowercase characters
+# and underscores. A good package name should reflect your organization's
+# name or the intended use of these models
+name: 'dbt_project'
+version: '1.0.0'
+config-version: 2
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'crate'
+
+# These configurations specify where dbt should look for different types of files.
+# The `source-paths` config, for example, states that models in this project can be
+# found in the "models/" directory. You probably won't need to change these!
+source-paths: ["models"]
+analysis-paths: ["analysis"]
+test-paths: ["tests"]
+data-paths: ["data"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"  # directory which will store compiled SQL files
+clean-targets:         # directories to be removed by `dbt clean`
+    - "target"
+    - "dbt_modules"
+
+
+# Configuring models
+# Full documentation: https://docs.getdbt.com/docs/configuring-models
+
+# In this example config, we tell dbt to build all models in the example/ directory
+# as tables. These settings can be overridden in the individual model files
+# using the `{{ config(...) }}` macro.
+models:
+  dbt_project:
+#      # Applies to all files under models/example/
+    materialized: table
+seeds:
+  dbt_project:
+    person:
+      # Override column types
+      +column_types:
+        id: integer
+        birth: timestamp without time zone
+        country_code: varchar(2)
+        name: varchar(32)
+    sales:
+      # Override column types
+      +column_types:
+        sale_id: integer
+        client_id: integer
+        product_id: integer
+        date_s: timestamp with time zone
+    products:
+      # Override column types
+      +column_types:
+        product_id: integer
+        product_description: varchar(32)
+        category: varchar(8)
+        price: integer
+    country_codes:
+      # Override column types
+      +column_types:
+        country_code: varchar(2)
+        country_name: varchar(32)
+        status: integer

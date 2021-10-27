@@ -1,0 +1,5 @@
+product_id,product_description,category,price
+0000,Description of product 0,cat1,3000
+0001,Description of product 1,cat1,2500
+0002,Description of product 2,cat2,0
+0003,Description of product 3,cat3,4800
