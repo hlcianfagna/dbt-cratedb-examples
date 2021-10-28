@@ -1,4 +1,5 @@
 select
+    s."id" as sale_id,
     p."id" as client_id,
     p."name" as client_name,
     cc."country_name" as client_country,
