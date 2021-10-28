@@ -39,6 +39,21 @@ pip install dbt-cratedb
 
 ## Configuración del profile
 
+Por defecto, el archivo profiles.yaml, dónde se encuentran las posibles conexiones a bases de datos, se encuentra ubicado en ~/.dbt/profiles.yml.
+El contenido de este dependerá de la conexión a la base de datos. Para este ejemplo en particular que considera el adaptador de CrateDB, el contenido de este archivo debe ser similar al siguiente
+
+crate:
+  outputs:
+    dev:
+      type: cratedbadapter
+      threads: 1
+      host: <IP de la BD>
+      port: 5432
+      user: crate
+      database: ""
+      schema: dbt_dev
+  target: dev
+
 
 ## Inicialización del proyecto
 Para iniciar un nuevo proyecto de dbt, correr el siguiente comando.
