@@ -78,6 +78,8 @@ Posterior a la inicialización del proyecto de dbt, guardar el contenido de cada
  * example_files/models_files -> models
  * example_files/snapshots_files -> snapshots
  * example_files/tests_files -> tests
+ * example_files/analysis_files -> analysis
+ * example_files/dbt_project.yml -> ./dbt_project.yml
 
 Adicionalmente se reemplaza el contenido del archivo dbt_project.yml en el proyecto de dbt, por el contenido en el directorio example_files de este repositorio.
 
