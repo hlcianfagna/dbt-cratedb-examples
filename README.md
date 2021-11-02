@@ -31,7 +31,7 @@ Considerar la instalación requerida para el sistema operativo según lo que se 
 Descargar e instalar según indicaciones en https://git-scm.com/downloads según el sistema operativo utilizado.
 
 ### Consideraciones adicionales
- * La versión recomendada de python es la 3.8.10 ya que con versiones más nuevas podría generar problemas de dependencias en el proceso de instalación de dbt.
+ * La versión recomendada de python para Windows es la 3.8.10 ya que con versiones más nuevas podría generar problemas de dependencias en el proceso de instalación de dbt.
  * Para windows podría requerirse habilitar "developer mode" y "long paths" e instalar visual C++ build tools
  * En Windows es necesario incluir las variables de entorno para poder ejecutar ambos programas desde cmd o powershell.
 
