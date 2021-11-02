@@ -8,7 +8,7 @@ Se describe un paso a paso de un ejemplo de uso del adaptador de CrateDB para
 Debe tener instalado python. En caso de no contar con esta herramienta consultar la siguiente dirección y proceder según el sistema operativo de su máquina.
 https://www.python.org/downloads/
 
- * En caso de usar Windows, ver las consideraciones especiales.
+ * En caso de usar Windows, ver las consideraciones adicionales.
 
 ### pip
 pip es el instalador de paquetes de python, el cual será necesario para la instalación de dbt y el adaptador dbt-cratedb. En caso de no contar con la herramienta
