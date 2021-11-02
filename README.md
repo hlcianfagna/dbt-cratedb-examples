@@ -98,3 +98,12 @@ dbt run
 ## Generación de los snapshots
 
 dbt snapshot.
+ 
+ ## Generación de docs
+ 
+ dbt docs generate
+ 
+ ## Servicio http
+ 
+ dbt docs serve
+ 
