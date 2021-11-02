@@ -43,7 +43,7 @@ Descargar e instalar según indicaciones en https://git-scm.com/downloads según
 
 ## Instalación del driver dbt-cratedb
 
-pip install dbt-cratedb==0.20.1a67
+pip install dbt-cratedb==0.20.2
 
 ## Configuración del profile
 
