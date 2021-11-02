@@ -8,7 +8,7 @@ Se describe un paso a paso de un ejemplo de uso del adaptador de CrateDB para
 Debe tener instalado python. En caso de no contar con esta herramienta consultar la siguiente dirección y proceder según el sistema operativo de su máquina.
 https://www.python.org/downloads/
 
- * En caso de usar Windows, ver las consideraciones especiales.
+ * En caso de usar Windows, ver las consideraciones adicionales.
 
 ### pip
 pip es el instalador de paquetes de python, el cual será necesario para la instalación de dbt y el adaptador dbt-cratedb. En caso de no contar con la herramienta
@@ -43,7 +43,7 @@ Descargar e instalar según indicaciones en https://git-scm.com/downloads según
 
 ## Instalación del driver dbt-cratedb
 
-pip install dbt-cratedb==0.20.1a67
+pip install dbt-cratedb==0.20.2
 
 ## Configuración del profile
 
@@ -78,6 +78,8 @@ Posterior a la inicialización del proyecto de dbt, guardar el contenido de cada
  * example_files/models_files -> models
  * example_files/snapshots_files -> snapshots
  * example_files/tests_files -> tests
+ * example_files/analysis_files -> analysis
+ * example_files/dbt_project.yml -> ./dbt_project.yml
 
 Adicionalmente se reemplaza el contenido del archivo dbt_project.yml en el proyecto de dbt, por el contenido en el directorio example_files de este repositorio.
 
