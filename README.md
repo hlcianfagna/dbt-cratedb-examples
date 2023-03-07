@@ -1,78 +1,70 @@
-# ejercicios-dbt-cratedb
-
-Se describe un paso a paso de un ejemplo de uso del adaptador de CrateDB para 
-
-## Prerequisitos
-
-### Python
-Debe tener instalado python. En caso de no contar con esta herramienta consultar la siguiente dirección y proceder según el sistema operativo de su máquina.
-https://www.python.org/downloads/
-
- * En caso de usar Windows, ver las consideraciones adicionales.
-
-### pip
-pip es el instalador de paquetes de python, el cual será necesario para la instalación de dbt y el adaptador dbt-cratedb. En caso de no contar con la herramienta
-
-Descargar el siguiente archivo:
-https://bootstrap.pypa.io/get-pip.py
-
-Ejecutar el archivo get-pip.py utilizando python.
-
-Para actualizar pip, posteriormente ejecutar
-
-python -m pip install --upgrade pip
-
-### postgresql
-
-Considerar la instalación requerida para el sistema operativo según lo que se indica en https://www.postgresql.org/download/
-
-### git
-
-Descargar e instalar según indicaciones en https://git-scm.com/downloads según el sistema operativo utilizado.
-
-### Consideraciones adicionales
- * La versión recomendada de python para Windows es la 3.8.10 ya que con versiones más nuevas podría generar problemas de dependencias en el proceso de instalación de dbt.
- * Para windows podría requerirse habilitar "developer mode" y "long paths" e instalar visual C++ build tools
- * En Windows es necesario incluir las variables de entorno para poder ejecutar ambos programas desde cmd o powershell.
+# Exercises for dbt-cratedb
 
 
-## Instalación de dbt
- 
- pip install dbt
- pip install --upgrade dbt
+## About
 
-## Instalación del driver dbt-cratedb
+Example support files using the [CrateDB adapter plugin for dbt].
 
-pip install dbt-cratedb==0.20.2
 
-## Configuración del profile
+## Prerequisites
 
-Por defecto, el archivo profiles.yaml, dónde se encuentran las posibles conexiones a bases de datos, se encuentra ubicado en ~/.dbt/profiles.yml.
-El contenido de este dependerá de la conexión a la base de datos. Para este ejemplo en particular que considera el adaptador de CrateDB, el contenido de este archivo debe ser similar al siguiente
+- A recent Python installation is required. If you need it, head over to
+  https://www.python.org/downloads/
+- PostgreSQL: Consider the installation required for the operating system as given at
+  https://www.postgresql.org/download/
+- Git: Download and install as directed at https://git-scm.com/downloads depending on
+  the operating system used.
+- Additional considerations:
+  - On Windows, it may be required to enable "developer mode" and "long paths", 
+    and install visual C++ build tools.
+  - On Windows, it is necessary to include the environment variables to be able
+    to run both programs from cmd or powershell.
 
+
+## Setup
+
+```shell
+python3 -m venv .venv
+source .venv/bin/activate
+pip install dbt git+https://github.com/crate-workbench/dbt-cratedb2
+```
+
+## Usage
+
+### Profile configuration
+
+By default, the `profiles.yaml` file, where the available database connections
+are configured, is located at `~/.dbt/profiles.yml`. The content of this file
+will depend on the database connection. For this particular example considering
+the CrateDB adapter, the content of this file should be similar to the following.
+```yaml
 crate:
   outputs:
     dev:
       type: cratedbadapter
       threads: 1
-      host: <IP de la BD>
+      host: <IP of DB>
       port: 5432
       user: crate
       database: ""
       schema: dbt_dev
   target: dev
+```
 
+### Project initialization
 
-## Inicialización del proyecto
-Para iniciar un nuevo proyecto de dbt, correr el siguiente comando.
+To initialize a new dbt project, run the following command.
+```shell
+dbt init example-dbt
+```
 
-dbt init ejemplo-dbt
+This will create a directory containing multiple directories and files.
 
-Esto creará un directorio que contiene múltiples directorios y archivos.
+### Copying csv files to their respective directories
 
-## Copia de archivos csv a sus respectivos directorios
-
-Posterior a la inicialización del proyecto de dbt, guardar el contenido de cada directorio dentro del directorio example_files de este repositorio, con su respectivo directorio en el proyecto de dbt de la siguiente forma.
+After initializing the dbt project, save the contents of each directory inside
+the `example_files` directory of this repository, with its respective directory
+in the dbt project as follows.
 
  * example_files/csv_files -> data
  * example_files/models_files -> models
@@ -81,29 +73,30 @@ Posterior a la inicialización del proyecto de dbt, guardar el contenido de cada
  * example_files/analysis_files -> analysis
  * example_files/dbt_project.yml -> ./dbt_project.yml
 
-Adicionalmente se reemplaza el contenido del archivo dbt_project.yml en el proyecto de dbt, por el contenido en el directorio example_files de este repositorio.
+Additionally, the content of the `dbt_project.yml` file in the dbt project is
+replaced by the content in the `example_files` directory of this repository.
 
-## Carga de datos crudos a Cratedb
+### Useful dbt commands
 
+```shell
+# Load raw data into CrateDB
 dbt seed
 
-## Validación de condiciones indicadas en los tests
-
+# Validate conditions specified in the tests
 dbt test
 
-## Generación de nuevas tablas resultantes de las transformaciones
-
+# Generate new tables resulting from the transformations
 dbt run
 
-## Generación de los snapshots
+# Generate snapshots
+dbt snapshot
+ 
+# Generate docs
+dbt docs generate
+ 
+# http service
+dbt docs serve
+```
 
-dbt snapshot.
- 
- ## Generación de docs
- 
- dbt docs generate
- 
- ## Servicio http
- 
- dbt docs serve
- 
+
+[CrateDB adapter plugin for dbt]: https://github.com/crate-workbench/dbt-cratedb2
